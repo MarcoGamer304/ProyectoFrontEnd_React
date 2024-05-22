@@ -1,0 +1,128 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: cursive;
+}
+
+body {
+    background-image: url('../Assets/fondoLogin.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.form-box-login {
+    padding-top: 10px;
+}
+
+.contenedor-padre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contenedor {
+    width: 20%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.button-fix {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    margin-bottom: 5%;
+}
+
+.button-fix:hover {
+    background-color: rgb(206, 231, 255);
+    color: #3b3b3b;
+}
+
+.input-box {
+    position: relative;
+    margin: 10px 0;
+}
+
+.text-field {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 250px;
+    padding: 5px 20px 5px 15px;
+    border-radius: 20px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 14px;
+    overflow: hidden;
+    text-wrap: pretty;
+}
+
+.text-field:focus {
+    border-color: #000000;
+    border-width: px;
+}
+
+.icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #999;
+}
+
+.remember {
+    font-size: 13px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.link,
+.registerLink {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.registerLink {
+    margin-bottom: 10px;
+    font-size: 15px;
+    height: 4.5vh;
+}
+
+
+.link a,
+.registerLink a {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 3%;
+}
+
+.link a:hover,
+.registerLink a:hover {
+    border-top: 3%;
+    text-decoration: underline;
+    color: blue;
+}
