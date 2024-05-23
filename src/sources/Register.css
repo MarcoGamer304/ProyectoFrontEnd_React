@@ -4,18 +4,17 @@
     font-family: cursive;
 }
 
-body {
-    background-image: url('../Assets/fondoLogin.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+
 
 .form-box-login {
     padding-top: 10px;
 }
 
 .contenedor-padre {
+    background-image: url('../Assets/fondoLogin.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;

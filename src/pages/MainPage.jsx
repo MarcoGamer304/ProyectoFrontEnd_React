@@ -7,9 +7,7 @@ import carrousel2 from '../Assets/carrousel2.png';
 import carrousel3 from '../Assets/carrousel3.png';
 
 import {
-  Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle,
-  DropdownMenu, DropdownItem, Button, Offcanvas, OffcanvasBody, OffcanvasHeader, Carousel, CarouselCaption,
-  CarouselControl, CarouselIndicators, CarouselItem } from 'reactstrap';
+  Carousel, CarouselCaption, CarouselControl, CarouselIndicators, CarouselItem } from 'reactstrap';
 
 const items = [
   {
@@ -33,11 +31,6 @@ const items = [
 ];
 
 export default function About(args) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [offcanvasOpen, setOffcanvasOpen] = useState(false);
-
-  const toggleNavbar = () => setIsOpen(!isOpen);
-  const toggleOffcanvas = () => setOffcanvasOpen(!offcanvasOpen);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -77,100 +70,31 @@ export default function About(args) {
 
 
   return (
-
-    <div className='navbarBootstrap'>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Mi Proyecto</NavbarBrand>
-        <NavbarToggler onClick={toggleNavbar} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink href="/home">Home</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/about">About</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/contact">Contact</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu >
-                <DropdownItem href="/option1">
-                  Option 1
-                </DropdownItem>
-                <DropdownItem href="/option2">
-                  Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem href="/reset">
-                  Reset
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-            <Button color="ligth" onClick={toggleOffcanvas} className="me-2">
-              &#9776;
-            </Button>
-          </Nav>
-        </Collapse>
-      </Navbar>
-
-      <Offcanvas isOpen={offcanvasOpen} toggle={toggleOffcanvas} direction="start">
-        <OffcanvasHeader toggle={toggleOffcanvas}>
-          Menú
-        </OffcanvasHeader>
-        <OffcanvasBody>
-          <Nav vertical>
-            <NavItem>
-              <NavLink href="/home">Home</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/about">About</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/contact">Contact</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/option1">Option 1</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/option2">Option 2</NavLink>
-            </NavItem>
-          </Nav>
-        </OffcanvasBody>
-      </Offcanvas>
-      <div className='carrousel'>
-        <Carousel
+    <div className='carrousel'>
+      <Carousel
+        activeIndex={activeIndex}
+        next={next}
+        previous={previous}
+        {...args}
+      >
+        <CarouselIndicators
+          items={items}
           activeIndex={activeIndex}
-          next={next}
-          previous={previous}
-          {...args}
-        >
-          <CarouselIndicators
-            items={items}
-            activeIndex={activeIndex}
-            onClickHandler={goToIndex}
-          />
-          {slides}
-          <CarouselControl
-            direction="prev"
-            directionText="Previous"
-            onClickHandler={previous}
-          />
-          <CarouselControl
-            direction="next"
-            directionText="Next"
-            onClickHandler={next}
-          />
-        </Carousel>
-      </div>
+          onClickHandler={goToIndex}
+        />
+        {slides}
+        <CarouselControl
+          direction="prev"
+          directionText="Previous"
+          onClickHandler={previous}
+        />
+        <CarouselControl
+          direction="next"
+          directionText="Next"
+          onClickHandler={next}
+        />
+      </Carousel>
     </div>
-
-
-
-
   );
 };
 

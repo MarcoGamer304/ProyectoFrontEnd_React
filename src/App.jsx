@@ -4,10 +4,14 @@ import MainPage from "./pages/MainPage"
 import ForgotPassword from "./pages/ForgotPassword"
 import { Route, Routes } from "react-router-dom"
 import './sources/Redirecciones.css'
+import './sources/App.css'
+import './sources/Index.css';
+import  NavBar  from "./pages/NavBar"
 
 function App() {
   return (
     <>
+  <NavBar/>
     <div className="containerElements">    
         <Routes>          
           <Route path="/" element={<Login />} />

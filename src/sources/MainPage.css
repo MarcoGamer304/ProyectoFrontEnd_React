@@ -1,8 +1,9 @@
+
 .carousel-item {
     transition: opacity 0.1s ease-in;
     transition: opacity 2s ease-in-out;
   }
-  
+ 
   .carousel-item:not(.active) {
     opacity: 0;
   }
