@@ -2,24 +2,106 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow: hidden;
+    
 }
 
 body {
     font-family: Arial, sans-serif;
+    
 }
 
-nav {
+.nav1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fffcfc;
+    background-color: rgb(39, 39, 39);
+    padding: 10px 20px;
+    
+}
+
+.nav2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
     padding: 10px 20px;
 }
 
+.containerNav {
+    display: flex;
+    flex-direction: row;
+    
+  }
+
+  .menuLateral {
+    width: 200px; 
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+
+.menuSuperior {
+    flex: 1; 
+    background-color: #ffffff;
+    color: white;
+  }
+
+
+.paragraftSystem{
+    color: rgb(156, 156, 156);
+    padding-top: 40%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: start;  
+    letter-spacing: 1px;
+   font-size: 13px;
+   margin-bottom: 5px;
+   font-style: italic;
+
+}
 .logo {
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-size: 24px;
 }
+
+.logoL {
+    display: flex;
+    align-self: center;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    padding-top: 15%;
+    padding-bottom: 5%;
+}
+
+.ulLateral {
+    display: flex;
+    align-items: flex-start; /* Centra verticalmente los elementos */
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.listaLateral{
+    background-color: rgb(19, 19, 19);
+    color: #ffffff;
+   
+}
+.buttonLataral{
+    display: flex;
+    background-color: rgb(39, 39, 39);
+    color: #ffffff;
+    align-items: center;
+    border-radius: 10px;
+    margin: 8%;
+    border: 1px solid transparent;
+    transition: background-color 0.2s; 
+}
+
+.buttonLataral:hover {
+    background-color: rgb(60, 60, 60); /* Color de fondo diferente al hacer hover */
+}
+
 
 .nav-links {
     display: flex;
@@ -27,7 +109,7 @@ nav {
     margin: 4px;
 }
 
-.nav-links li {
+.nav-links .listaSuperior {
     margin-left: 20px; 
 }
 
@@ -72,7 +154,7 @@ nav {
         display: flex;
     }
 
-    .nav-links li {
+    .nav-links .listaSuperior {
         text-align: center;
         margin: 15px 0;
     }
