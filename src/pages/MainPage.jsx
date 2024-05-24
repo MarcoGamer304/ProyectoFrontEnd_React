@@ -1,100 +1,39 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import React, { useState } from 'react';
-import '../sources/MainPage.css';
+import React from 'react';
+import { Card, CardBody, CardTitle, CardText, CardSubtitle, Button } from 'reactstrap';
+import '../sources/MainPage.css'
 
-import carrousel1 from '../Assets/carrousel1.png';
-import carrousel2 from '../Assets/carrousel2.png';
-import carrousel3 from '../Assets/carrousel3.png';
-
-import {
-  Carousel, CarouselCaption, CarouselControl, CarouselIndicators, CarouselItem } from 'reactstrap';
-
-const items = [
-  {
-    src: carrousel1,
-    altText: 'Slide 1',
-    caption: 'Slide 1',
-    key: 1,
-  },
-  {
-    src: carrousel2,
-    altText: 'Slide 2',
-    caption: 'Slide 2',
-    key: 2,
-  },
-  {
-    src: carrousel3,
-    altText: 'Slide 3',
-    caption: 'Slide 3',
-    key: 3,
-  },
-];
-
-export default function About(args) {
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [animating, setAnimating] = useState(false);
-
-  const next = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
-    setActiveIndex(nextIndex);
-  };
-
-  const previous = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
-    setActiveIndex(nextIndex);
-  };
-
-  const goToIndex = (newIndex) => {
-    if (animating) return;
-    setActiveIndex(newIndex);
-  };
-
-  const slides = items.map((item, index) => {
-    return (
-      <CarouselItem
-        onExiting={() => setAnimating(true)}
-        onExited={() => setAnimating(false)}
-        key={item.src}
-      >
-        <img src={item.src} alt={item.altText} />
-        <CarouselCaption
-          captionText={item.caption}
-          captionHeader={item.caption}
-        />
-      </CarouselItem>
-    );
-  });
-
-
+const CardComponent = () => {
   return (
-    <div className='carrousel'>
-      <Carousel
-        activeIndex={activeIndex}
-        next={next}
-        previous={previous}
-        {...args}
-      >
-        <CarouselIndicators
-          items={items}
-          activeIndex={activeIndex}
-          onClickHandler={goToIndex}
-        />
-        {slides}
-        <CarouselControl
-          direction="prev"
-          directionText="Previous"
-          onClickHandler={previous}
-        />
-        <CarouselControl
-          direction="next"
-          directionText="Next"
-          onClickHandler={next}
-        />
-      </Carousel>
+    
+    <Card className='cardItem' body style={{ maxWidth: '300px', margin: 'auto' }}> <img alt="Sample" src="https://picsum.photos/300/200" />
+      <CardBody>
+        <CardTitle tag="h5"> Card title </CardTitle>
+        <CardSubtitle className="mb-2 text-muted" tag="h6"> Card subtitle </CardSubtitle>
+        <CardText>
+         text example build 
+        </CardText>
+        <Button className='buttonCard'> Button </Button>
+      </CardBody>
+    </Card>
+
+  );
+}
+
+const CardGrid = () => {
+  return (
+    <div className='container'>
+      <div className="containerCards">
+      <CardComponent />
+      <CardComponent />
+      <CardComponent />
+      <CardComponent />
+      <CardComponent />
+      <CardComponent />
+      </div>
     </div>
+
   );
 };
+
+export default CardGrid;
 

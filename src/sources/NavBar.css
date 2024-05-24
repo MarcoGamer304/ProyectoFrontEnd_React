@@ -2,22 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow: hidden;
+    position: sticky;
     
 }
 
 body {
     font-family: Arial, sans-serif;
-    
-}
-
-.nav1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(39, 39, 39);
-    padding: 10px 20px;
-    
+   
 }
 
 .nav2 {
@@ -30,8 +21,7 @@ body {
 
 .containerNav {
     display: flex;
-    flex-direction: row;
-    
+    flex-direction: row;  
   }
 
   .menuLateral {
@@ -60,7 +50,7 @@ body {
 
 }
 .logo {
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-size: 24px;
 }
 
@@ -87,26 +77,12 @@ body {
     color: #ffffff;
    
 }
-.buttonLataral{
-    display: flex;
-    background-color: rgb(39, 39, 39);
-    color: #ffffff;
-    align-items: center;
-    border-radius: 10px;
-    margin: 8%;
-    border: 1px solid transparent;
-    transition: background-color 0.2s; 
-}
-
-.buttonLataral:hover {
-    background-color: rgb(60, 60, 60); /* Color de fondo diferente al hacer hover */
-}
 
 
 .nav-links {
     display: flex;
     list-style: none;
-    margin: 4px;
+    margin: 0px;
 }
 
 .nav-links .listaSuperior {
@@ -118,6 +94,14 @@ body {
     padding-left: 5px;
     padding-right: 5px;
     padding-bottom: 3px;
+    border: none;
+    background-color: #ffffff;
+}
+
+.styled-button:hover{
+  
+    border: none;
+    background-color: #b5b5b5;
 }
 
 .nav-links a {
@@ -139,15 +123,19 @@ body {
     margin: 4px 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
     .nav-links {
         display: none;
-        position: absolute;
+        position: sticky;
         top: 60px;
-        right: 0;
+        right: 20%;
         background-color: #ffffff;
         width: 100%;
         flex-direction: column;
+    }
+
+    .logo{
+        opacity: 0;
     }
 
     .nav-links.nav-links-active {
@@ -161,5 +149,8 @@ body {
 
     .hiddenMenu {
         display: flex;
+        align-self: flex-start; 
+        
+        justify-content: flex-end;    
     }
 }

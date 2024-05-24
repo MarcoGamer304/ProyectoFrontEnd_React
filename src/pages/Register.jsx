@@ -67,7 +67,7 @@ export default function RegistrarUsuario() {
             </div>
             <div className="remember">
               <label>
-                <input type="checkbox" /> Accept Terms & Conditions
+                <input type="checkbox" required/> Accept Terms & Conditions
               </label>
             </div>
             <button className='button-fix' type='Submit'>Register</button>

@@ -1,14 +1,25 @@
+.container {
+  width: 75%;
+  margin: 0 auto; /* Esto centra horizontalmente el contenedor */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-.carousel-item {
-    transition: opacity 0.1s ease-in;
-    transition: opacity 2s ease-in-out;
-  }
- 
-  .carousel-item:not(.active) {
-    opacity: 0;
-  }
-  
-  .carousel-item.active {
-    opacity: 1;
-  }
- 
+.containerCards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cardItem{
+
+  flex-grow: 1;
+  flex-basis: 200;
+}
+.buttonCard{
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 40%;
+  display: flex;
+  align-self: flex-end;
+}

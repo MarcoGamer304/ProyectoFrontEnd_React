@@ -4,6 +4,10 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
 import '../sources/Login.css';
 import { useNavigate } from 'react-router-dom';
+import { FaInstagram } from "react-icons/fa6";
+import { AiOutlineGooglePlus } from "react-icons/ai";
+import { BiLogoFacebook } from "react-icons/bi";
+import { IoLogoGithub } from "react-icons/io";
 
 export default function Login() {
 
@@ -39,31 +43,41 @@ export default function Login() {
 
   return (
     <div className='contenedor-padre'>
-      <div className='contenedor'>
-        <div className='form-box-login'>
-          <form onSubmit={getSubmit}>
-            <h1>Login</h1>
-            <div className='input-box'>
-              <input className='text-field' type="text" name='username' placeholder='Username' maxLength="26" value={username} onChange={(e) => setUsername(e.target.value)} required />
-              <FaRegUserCircle className='icon' />
-            </div>
-            <div className='input-box'>
-              <input className='text-field' type="password" name='password' placeholder='Password' maxLength="26" value={passwordTxt} onChange={(e) => setPassword(e.target.value)} required />
-              <RiLockPasswordLine className='icon' />
-            </div>
-            <div className="remember">
-              <label>
-                <input type="checkbox" /> Remember me
-              </label>
-            </div>
-            <button className='button-fix' type='Submit'>Login</button>
-            <div className='link'>
-              <a href="/forgottenPasword" onClick={redireccionarRestorePassword}>Forgot password?</a>
-            </div>
-            <div className="registerLink">
-              <a href="/register" onClick={redireccionarRegister}>Register</a>
-            </div>
-          </form>
+      <div className='contenedorLog'>
+        <div className='container-child'>
+
+          <div className='form-box-login'>
+            <form onSubmit={getSubmit}>
+              <h1>Sign In</h1>
+              <div className='loginSocialMedia'>
+                <button className='SignUpMedia'><AiOutlineGooglePlus/></button>
+                <button className='SignUpMedia'><BiLogoFacebook/></button>
+                <button className='SignUpMedia'><FaInstagram/></button>
+                <button className='SignUpMedia'><IoLogoGithub/></button>
+                
+              </div>
+              <p className='paragraftLogin'>use your user and password</p>
+              <div className='input-box'>
+                <input className='text-field' type="text" name='username' placeholder='Username' maxLength="26" value={username} onChange={(e) => setUsername(e.target.value)} required />
+                <FaRegUserCircle className='icon' />
+              </div>
+              <div className='input-box'>
+                <input className='text-field' type="password" name='password' placeholder='Password' maxLength="26" value={passwordTxt} onChange={(e) => setPassword(e.target.value)} required />
+                <RiLockPasswordLine className='icon' />
+              </div>
+              <div className='link'>
+                <a href="/forgottenPasword" onClick={redireccionarRestorePassword}>Forgot your Password?</a>
+              </div>
+              <button className='button-fix' type='Submit'>Login</button>
+            </form>
+          </div>
+        </div>
+        <div className='containerRegisterLogin'>
+          <h2 className='etiquetaR'>Welcome, User!</h2>
+          <p className='paragraftRL'>Register with your personal information to access all our features </p>
+          <div className="registerLink">
+            <button className= 'buttonRegisterLogin' href="/register" onClick={redireccionarRegister}>Register</button>
+          </div>
         </div>
       </div>
     </div>
