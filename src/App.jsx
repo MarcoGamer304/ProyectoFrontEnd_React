@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom"
 import './sources/Redirecciones.css'
 import './sources/App.css'
 import './sources/Index.css';
-import  NavBar  from "./pages/NavBar"
+import  NavBar  from "./components/NavBar"
 
 function App() {
   return (

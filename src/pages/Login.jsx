@@ -50,11 +50,11 @@ export default function Login() {
             <form onSubmit={getSubmit}>
               <h1>Sign In</h1>
               <div className='loginSocialMedia'>
-                <button className='SignUpMedia'><AiOutlineGooglePlus/></button>
-                <button className='SignUpMedia'><BiLogoFacebook/></button>
-                <button className='SignUpMedia'><FaInstagram/></button>
-                <button className='SignUpMedia'><IoLogoGithub/></button>
-                
+                <button className='SignUpMedia'><AiOutlineGooglePlus /></button>
+                <button className='SignUpMedia'><BiLogoFacebook /></button>
+                <button className='SignUpMedia'><FaInstagram /></button>
+                <button className='SignUpMedia'><IoLogoGithub /></button>
+
               </div>
               <p className='paragraftLogin'>use your user and password</p>
               <div className='input-box'>
@@ -76,7 +76,7 @@ export default function Login() {
           <h2 className='etiquetaR'>Welcome, User!</h2>
           <p className='paragraftRL'>Register with your personal information to access all our features </p>
           <div className="registerLink">
-            <button className= 'buttonRegisterLogin' href="/register" onClick={redireccionarRegister}>Register</button>
+            <button className='buttonRegisterLogin' href="/register" onClick={redireccionarRegister}>Register</button>
           </div>
         </div>
       </div>

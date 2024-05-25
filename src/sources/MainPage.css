@@ -1,6 +1,6 @@
 .container {
   width: 75%;
-  margin: 0 auto; /* Esto centra horizontalmente el contenedor */
+  margin: 0 auto; 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

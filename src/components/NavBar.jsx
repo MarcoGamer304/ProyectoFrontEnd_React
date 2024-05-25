@@ -13,7 +13,7 @@ function Example() {
      
       <div className='menuSuperior'>
         <nav className='nav2'>
-          <div className="logo">Logo</div>
+          <div className="logo">Proyect</div>
           <ul className={`nav-links ${isNavActive ? 'nav-links-active' : ''}`}>
             <li className='listaSuperior'><a href="#services"><button className="styled-button">Usuarios</button></a></li>
             <li className='listaSuperior'><a href="#about"><button className="styled-button">Docentes</button></a></li>
