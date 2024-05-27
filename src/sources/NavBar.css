@@ -17,11 +17,15 @@ body {
     align-items: center;
     background-color: #ffffff;
     padding: 10px 20px;
+  
+    
 }
 
 .containerNav {
     display: flex;
-    flex-direction: row;  
+    flex-direction: row; 
+   
+    
   }
 
   .menuLateral {

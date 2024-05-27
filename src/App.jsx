@@ -7,6 +7,7 @@ import './sources/Redirecciones.css'
 import './sources/App.css'
 import './sources/Index.css';
 import  NavBar  from "./components/NavBar"
+import Usuarios from './pages/Usuarios'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/mainPage" element={<MainPage />} />
           <Route path="/forgottenPasword" element={<ForgotPassword />} />
+          <Route path="/usuarios" element={<Usuarios />} />
         </Routes>  
         </div>  
     </>

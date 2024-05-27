@@ -1,0 +1,18 @@
+
+.containerTableUsers {
+    width: 100%;
+    display: grid;
+    
+}
+
+.tableUsers{
+    width: 90%;
+    padding-top: 3%;
+    padding-left: 10%;
+ display: grid;
+
+ align-items: center;
+
+
+
+}
