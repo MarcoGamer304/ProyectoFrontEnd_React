@@ -6,7 +6,7 @@ const SelectedRows = (selectedRows) => {
 }
 
 const SelectedRow = (row) => {
-    console.log(row);
+    console.log(row.id);
 };
 
 const defaultTable = ({ columns, dataApi }) => {

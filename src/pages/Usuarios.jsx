@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Table from '../components/Table'
 import '../sources/Usuarios.css'
 import { Button } from 'reactstrap';
 import { MdDeleteOutline } from "react-icons/md";
 import { RiExchange2Line } from "react-icons/ri";
-import { IoMdStarOutline } from "react-icons/io";
+import DataTable from 'react-data-table-component';
 
-const columns = [
+let id;
+
+const columns = (deleteApi) => [
     {
         name: 'User',
         selector: row => row.user,
@@ -19,13 +20,33 @@ const columns = [
     },
     {
         button: true,
-        cell: () => <div>       
-            <Button style={{margin: '3px'}}><RiExchange2Line /></Button>
-            <Button style={{margin: '3px'}}><IoMdStarOutline /></Button>
-            <Button style={{margin: '3px'}}><MdDeleteOutline /></Button>        
-        </div>
+        cell: () => (
+            <div>
+                <Button onClick={""} style={{ margin: '3px' }}><RiExchange2Line /></Button>
+                <Button onClick={deleteApi} style={{ margin: '3px' }}><MdDeleteOutline /></Button>
+            </div>
+        )
     },
 ];
+
+const SelectedRows = (selectedRows) => {
+    console.log(selectedRows.selectedRows);
+}
+
+const SelectedRow = (row) => {
+    id = row.id;
+};
+
+const deleteApi = async (event, setDataApi) => {
+    try {
+        await fetch('http://localhost:8080/login/' + id, {
+            method: 'DELETE',
+        });
+        getSubmit(setDataApi);
+    } catch (error) {
+        console.error('Error en la solicitud:', error);
+    }
+};
 
 const getSubmit = async (setDataApi) => {
     try {
@@ -44,7 +65,6 @@ const UserTableModule = () => {
         getSubmit(setDataApi);
     }, []);
 
-    
     if (dataApi === null) {
         return <div className='containerTableUsers'>Cargando...</div>;
     }
@@ -52,10 +72,18 @@ const UserTableModule = () => {
     return (
         <div className='containerTableUsers'>
             <div className='tableUsers'>
-                <Table dataApi={dataApi} columns={columns}></Table>
+                <DataTable
+                    title="Tabla"
+                    columns={columns((event) => deleteApi(event, setDataApi))}
+                    data={dataApi}
+                    pagination
+                    selectableRows
+                    onSelectedRowsChange={SelectedRows}
+                    onRowMouseEnter={(row) => SelectedRow(row)}
+                />
             </div>
         </div>
-    )
+    );
 }
 
-export default UserTableModule
+export default UserTableModule;
