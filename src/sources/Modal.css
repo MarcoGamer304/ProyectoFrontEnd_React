@@ -1,0 +1,33 @@
+.btnCloseModal{
+    display: grid;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+.input{
+    display: grid;
+    align-items: center;
+    margin-bottom: 4%;
+    
+}
+.inputText{
+    border-radius: 5px;
+    padding-left: 5px;
+}
+
+.titleModal{
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding-bottom: 8%;
+   
+}
+
+.buttonsModal{
+    display: flex;
+    margin-top: 8%;
+    justify-content: space-evenly; 
+    
+}
+
