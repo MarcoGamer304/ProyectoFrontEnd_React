@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../sources/Usuarios.css';
+import '../sources/ManagerCategorias.css';
 import { Button } from 'reactstrap';
 import { MdDeleteOutline } from "react-icons/md";
 import { RiExchange2Line } from "react-icons/ri";
@@ -9,13 +9,13 @@ import Modal from '../components/Modal';
 
 const columns = (deleteApi, openModalPatch) => [
     {
-        name: 'User',
-        selector: row => row.user,
+        name: 'Descripcion',
+        selector: row => row.descripcion,
         sortable: true,
     },
     {
-        name: 'Password',
-        selector: row => row.password,
+        name: 'Nombre',
+        selector: row => row.nombre,
         sortable: true,
     },
     {
@@ -29,17 +29,17 @@ const columns = (deleteApi, openModalPatch) => [
     },
 ];
 
-const ModalPatch = ({ isOpenModal, closeModal, user, password, handleInputChange, handleSubmit }) => (
+const ModalPatch = ({ isOpenModal, closeModal, descripcion, nombre, handleInputChange, handleSubmit }) => (
     <Modal open={isOpenModal} close={closeModal}>
         <div>
             <form onSubmit={handleSubmit}>
-                <h4 className='titleModal'> Editar Usuario</h4>
+                <h4 className='titleModal'> Editar Categoria</h4>
                 <div className='inputsModal'>
                     <div className='input'>
-                        <input className='inputText' type="text" placeholder='username' value={user} onChange={(e) => handleInputChange(e, 'user')} required />
+                        <input className='inputText' type="text" placeholder='username' value={descripcion} onChange={(e) => handleInputChange(e, 'descripcion')} required />
                     </div>
                     <div className='input'>
-                        <input className='inputText' type="password" placeholder='password' value={password} onChange={(e) => handleInputChange(e, 'password')} required />
+                        <input className='inputText' type="text" placeholder='password' value={nombre} onChange={(e) => handleInputChange(e, 'nombre')} required />
                     </div>
                 </div>
                 <div className='buttonsModal'>
@@ -61,7 +61,7 @@ const SelectedRow = (row) => {
 //DELETE
 const deleteApi = async (id, setDataApi) => {
     try {
-        await fetch('http://localhost:8080/login/' + id, {
+        await fetch('http://localhost:8080/categoria/' + id, {
             method: 'DELETE',
         });
         getSubmit(setDataApi);
@@ -72,7 +72,7 @@ const deleteApi = async (id, setDataApi) => {
 //GET
 const getSubmit = async (setDataApi) => {
     try {
-        const response = await fetch('http://localhost:8080/login/allUsers');
+        const response = await fetch('http://localhost:8080/categoria/allCategoria');
         const data = await response.json();
         setDataApi(data);
     } catch (error) {
@@ -80,22 +80,22 @@ const getSubmit = async (setDataApi) => {
     }
 };
 //PATCH
-const patchtApi = async (id, user, password, setDataApi, setIsOpenModalPatch) => {
+const patchtApi = async (id, descripcion, nombre, setDataApi, setIsOpenModalPatch) => {
     try {
-        const response = await fetch('http://localhost:8080/login/allUsers');
+        const response = await fetch('http://localhost:8080/categoria/allCategoria');
         const data = await response.json();
 
-        const userFind = data.find(findUser => findUser.user === user);
+        const etiquetaFind = data.find(findEtiqueta => findEtiqueta.nombre === nombre);
 
-        if (userFind===false) {
-            console.log('Usuario no existente:', userFind);
+        if (etiquetaFind === false) {
+            console.log('Categoria no existente:', etiquetaFind);
         } else {
-            const response = await fetch('http://localhost:8080/login', {
+            const response = await fetch('http://localhost:8080/categoria', {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id, user, password })
+                body: JSON.stringify({ id, descripcion, nombre })
             });
             const data = await response.json();
             getSubmit(setDataApi);
@@ -107,23 +107,23 @@ const patchtApi = async (id, user, password, setDataApi, setIsOpenModalPatch) =>
     }
 };
 //POST
-const postApi = async (event, user, password, setDataApi, setIsOpen) => {
+const postApi = async (event, descripcion, nombre, setDataApi, setIsOpen) => {
     event.preventDefault();
     try {
-        const response = await fetch('http://localhost:8080/login/allUsers');
+        const response = await fetch('http://localhost:8080/categoria/allCategoria');
         const data = await response.json();
 
-        const userFind = data.find(findUser => findUser.user === user);
+        const etiquetaFind = data.find(findEtiqueta => findEtiqueta.nombre === nombre);
 
-        if (userFind) {
-            console.log('Usuario ya existente:', userFind);
+        if (etiquetaFind) {
+            console.log('Categoria ya existente:', etiquetaFind);
         } else {
-            const postResponse = await fetch('http://localhost:8080/login', {
+            const postResponse = await fetch('http://localhost:8080/categoria', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ user, password })
+                body: JSON.stringify({ descripcion, nombre })
             });
 
             if (postResponse.ok) {
@@ -141,13 +141,13 @@ const postApi = async (event, user, password, setDataApi, setIsOpen) => {
     }
 }
 
-const UserTableModule = () => {
+const CategoriasModule = () => {
     const [dataApi, setDataApi] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenModalPatch, setIsOpenModalPatch] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
-    const [user, setUser] = useState('');
-    const [password, setPassword] = useState('');
+    const [descripcion, setDescripcion] = useState('');
+    const [nombre, setNombre] = useState('');
     const [currentUserId, setCurrentUserId] = useState(null);
 
     useEffect(() => {
@@ -155,23 +155,23 @@ const UserTableModule = () => {
     }, []);
 
     const handleInputChange = (e, field) => {
-        if (field === 'user') setUser(e.target.value);
-        if (field === 'password') setPassword(e.target.value);
+        if (field === 'descripcion') setDescripcion(e.target.value);
+        if (field === 'nombre') setNombre(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isEditing) {
-            patchtApi(currentUserId, user, password, setDataApi, setIsOpenModalPatch);
+            patchtApi(currentUserId, descripcion, nombre, setDataApi, setIsOpenModalPatch);
         } else {
-            postApi(e, user, password, setDataApi, setIsOpen);
+            postApi(e, descripcion, nombre, setDataApi, setIsOpen);
         }
     };
 
     const openModalPatch = (row) => {
         setCurrentUserId(row.id);
-        setUser(row.user);
-        setPassword(row.password);
+        setDescripcion(row.descripcion);
+        setNombre(row.nombre);
         setIsOpenModalPatch(true);
         setIsEditing(true);
     };
@@ -179,8 +179,8 @@ const UserTableModule = () => {
     const closeModal = () => {
         setIsOpen(false);
         setIsOpenModalPatch(false);
-        setUser('');
-        setPassword('');
+        setDescripcion('');
+        setNombre('');
         setIsEditing(false);
     };
 
@@ -189,22 +189,22 @@ const UserTableModule = () => {
     }
 
     return (
-        <div className='containerTableUsers'>
-            <div className='tableUsers'>
-                <ModalPatch isOpenModal={isOpenModalPatch} closeModal={closeModal} user={user} password={password} handleInputChange={handleInputChange} handleSubmit={handleSubmit} />
+        <div className='containerTableCategorias'>
+            <div className='tableCategorias'>
+                <ModalPatch isOpenModal={isOpenModalPatch} closeModal={closeModal} descripcion={descripcion} nombre={nombre} handleInputChange={handleInputChange} handleSubmit={handleSubmit} />
                 <div className='divModal'>
-                    <button className='buttonModal' onClick={() => { setIsOpen(true); setIsEditing(false); }}><IoMdAdd /> Agregar Usuario</button>
+                    <button className='buttonModal' onClick={() => { setIsOpen(true); setIsEditing(false); }}><IoMdAdd /> Agregar Categoria</button>
                 </div>
                 <Modal open={isOpen} close={closeModal}>
                     <div>
                         <form onSubmit={handleSubmit}>
-                            <h4 className='titleModal'> Agregar Usuario</h4>
+                            <h4 className='titleModal'> Agregar Categoria</h4>
                             <div className='inputsModal'>
                                 <div className='input'>
-                                    <input className='inputText' type="text" placeholder='username' value={user} onChange={(e) => handleInputChange(e, 'user')} required />
+                                    <input className='inputText' type="text" placeholder='descripcion' value={descripcion} onChange={(e) => handleInputChange(e, 'descripcion')} required />
                                 </div>
                                 <div className='input'>
-                                    <input className='inputText' type="password" placeholder='password' value={password} onChange={(e) => handleInputChange(e, 'password')} required />
+                                    <input className='inputText' type="text" placeholder='nombre' value={nombre} onChange={(e) => handleInputChange(e, 'nombre')} required />
                                 </div>
                             </div>
                             <div className='buttonsModal'>
@@ -229,4 +229,4 @@ const UserTableModule = () => {
     );
 };
 
-export default UserTableModule;
+export default CategoriasModule;

@@ -1,26 +1,24 @@
-
-.containerTableUsers {
+.containerTableCategorias {
     width: 100%;
     display: grid;
-    
+
 }
 
-.tableUsers{
+.tableCategorias {
     width: 90%;
     padding-top: 3%;
     padding-left: 10%;
- display: grid;
-
- align-items: center;
+    display: grid;
+    align-items: center;
 }
 
-.divModal{
+.divModal {
     margin-bottom: 1%;
     position: 'relative';
     z-Index: 1;
 }
 
-.buttonModal{
+.buttonModal {
     align-items: center;
     background-color: rgb(255, 255, 255);
     border-radius: 5px;

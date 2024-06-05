@@ -8,6 +8,10 @@ import './sources/App.css'
 import './sources/Index.css';
 import  NavBar  from "./components/NavBar"
 import Usuarios from './pages/Usuarios'
+import Actividad from './pages/ManagerActividades'
+import Etiqueta from './pages/ManagerEtiquetas'
+import Categoria from './pages/ManagerCategorias'
+import Evaluacion from './pages/ManagerEvaluaciones'
 
 function App() {
   return (
@@ -20,6 +24,10 @@ function App() {
           <Route path="/mainPage" element={<MainPage />} />
           <Route path="/forgottenPasword" element={<ForgotPassword />} />
           <Route path="/usuarios" element={<Usuarios />} />
+          <Route path="/actividad" element={<Actividad />} />
+          <Route path="/etiqueta" element={<Etiqueta />} />
+          <Route path="/categoria" element={<Categoria />} />
+          <Route path="/evaluacion" element={<Evaluacion />} />
         </Routes>  
         </div>  
     </>
